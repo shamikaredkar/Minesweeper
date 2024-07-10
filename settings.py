@@ -30,6 +30,7 @@ tile_numbers = []
 for i in range(1,9): 
     #Using transform to scale this image to TILESIZE BY TILESIZE
     #Using image loads and the os path join to join the assets folder and cakk the file name
+    print(os.path.join("assets", f"Tile{i}.png"))
     tile_numbers.append(pygame.transform.scale(pygame.image.load(os.path.join("assets", f"Tile{i}.png")), (TILESIZE, TILESIZE)))
 
 tile_empty = pygame.transform.scale(pygame.image.load(os.path.join("assets", "TileEmpty.png")), (TILESIZE, TILESIZE))

@@ -12,7 +12,8 @@ class Game:
     
     #Creates a new game
     def new(self):
-        pass
+        self.board = Board()
+        self.board.display_board()
     
     #The game loop
     def run(self):
