@@ -42,13 +42,13 @@ class Game:
                 my //= TILESIZE
                 
                 if event.button == 1:
-                    if not self.board.board_list[mx][my].flagged:
-                        #DIG and check if exploded
+                    if not self.board.board_list[my][mx].flagged:
+                    # DIG and check if exploded
                         pass
-                if event.button == 3: 
-                    #if its not revealed then we can add the flag
-                    if not self.board.board_list[mx][my].revealed:
-                        self.board.board_list[mx][my].flagged = not self.board.board_list[mx][my].flagged
+                if event.button == 3:
+                # if its not revealed then we can add the flag
+                    if not self.board.board_list[my][mx].revealed:
+                        self.board.board_list[my][mx].flagged = not self.board.board_list[my][mx].flagged
                 
 game = Game()
 while True:
