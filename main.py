@@ -22,11 +22,20 @@ class Game:
             self.clock.tick(FPS)
             self.events()
             self.draw()
+        else: 
+            self.end_screen()
     
     def draw(self):
         self.screen.fill(BGCOLOUR)
         self.board.draw(self.screen)
         pygame.display.flip()
+        
+    #Function to pause the game after you win
+    def check_win(self):
+        for row in self.board.board_list:
+            for tile in row:
+                if tile.type != "X" and not tile.revealed:
+                    return False
     
     #mouse click eventsa
     def events(self):
@@ -59,6 +68,23 @@ class Game:
                 # if its not revealed then we can add the flag
                     if not self.board.board_list[my][mx].revealed:
                         self.board.board_list[my][mx].flagged = not self.board.board_list[my][mx].flagged
+                if self.check_win():
+                    self.win = True
+                    self.playing = False
+                    for row in self.board.board_list:
+                        for tile in row:
+                            if not tile.revealed:
+                                tile.flagged = True
+    def end_screen(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit(0)
+            
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    return 
+            
                 
 game = Game()
 while True:
