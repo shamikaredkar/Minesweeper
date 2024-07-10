@@ -22,9 +22,15 @@ class Tile:
     
     #Draws the board
     def draw(self, board_surface):
+        #if it not flagged and just revelaed we display the actual image. it is either a mine or a number
+        if not self.flagged and self.revealed:
         #board_surface is the destination surface where the tile_unknown will be drawn
         #blit() -- draws the tile_unkown on the board_surface
-        board_surface.blit(self.image, (self.x, self.y))
+            board_surface.blit(self.image, (self.x, self.y))
+        elif self.flagged and not self.revealed:
+            board_surface.blit(tile_flag, (self.x, self.y))
+        elif not self.revealed:
+            board_surface.blit(tile_unknown, (self.x, self.y))
     
     def __repr__(self):
         return self.type
