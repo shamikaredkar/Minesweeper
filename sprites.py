@@ -44,6 +44,8 @@ class Board:
 
         self.placing_mines()
         self.place_clues()
+        #storing all values that are dug out in this list
+        self.dug = []
         
     #Placing mines
     def placing_mines(self):
@@ -88,6 +90,27 @@ class Board:
             for tile in row:
                 tile.draw(self.board_surface)
         screen.blit(self.board_surface, (0,0))
+    
+    #DIG ALGORITHM -- recursive function
+    def dig(self, x, y):
+        self.dug.append((x, y))
+        #if we click on a mine straightaway
+        if self.board_list[x][y] == "X":
+            self.board_list[x][y].revealed = True
+            self.board_list[x][y].image = tile_exploded
+            return False
+        elif self.board_list[x][y] == "C":
+            self.board_list[x][y].revealed = True
+            return True
+        self.board_list[x][y].revealed = True
+        for row in range(max(0, x-1), min(ROWS-1, x+1)+1):
+            for col in range(max(0, y-1), min(COLUMNS-1, y+1)+1):
+                if (row, col) not in self.dug:
+                    self.dig(row, col)
+        return True
+        
+            
+        
     
     def display_board(self):
         for row in self.board_list:
