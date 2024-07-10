@@ -44,7 +44,17 @@ class Game:
                 if event.button == 1:
                     if not self.board.board_list[my][mx].flagged:
                     # DIG and check if exploded
-                        pass
+                        if not self.board.dig(my,mx): 
+                            #explode
+                            for row in self.board.board_list:
+                                for tile in row:
+                                    if tile.flagged and tile.type != "X":
+                                        tile.flagged = False
+                                        tile.revealed = True
+                                        tile.image = tile_not_mine
+                                    elif tile.type == "X":
+                                        tile.revealed = True
+                            self.playing = False
                 if event.button == 3:
                 # if its not revealed then we can add the flag
                     if not self.board.board_list[my][mx].revealed:
