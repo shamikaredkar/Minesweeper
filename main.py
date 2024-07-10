@@ -28,11 +28,28 @@ class Game:
         self.board.draw(self.screen)
         pygame.display.flip()
     
+    #mouse click eventsa
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit(0)
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mx, my = pygame.mouse.get_pos()
+                #We want to check which tile we're clicking
+                mx //= TILESIZE #gives exact location of each of the tile
+                my //= TILESIZE
+                
+                if event.button == 1:
+                    if not self.board.board_list[mx][my].flagged:
+                        #DIG and check if exploded
+                        pass
+                if event.button == 3: 
+                    #if its not revealed then we can add the flag
+                    if not self.board.board_list[mx][my].revealed:
+                        self.board.board_list[mx][my].flagged = not self.board.board_list[mx][my].flagged
+                
 game = Game()
 while True:
     game.new()
