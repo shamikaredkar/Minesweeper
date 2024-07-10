@@ -25,11 +25,11 @@ class Tile:
 class Board:
     def __init__(self):
         #Size of the board is the size of the window
-        self.board_surface = pygame.Surface(WIDTH, HEIGHT)
+        self.board_surface = pygame.Surface((WIDTH, HEIGHT))
         #2D list containing tiles
         self.board_list = [[Tile(col, row, tile_empty, ".")
                             for row in range(ROWS)] for col in range(COLUMNS)]
     
     def display_board(self):
-        for i in self.board_list:
+        for row in self.board_list:
             print(row)
