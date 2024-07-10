@@ -7,7 +7,7 @@ class Game:
     #Constructor creates the window, sets the title, creates a clock
     def __init__(self) -> None:
         self.screen = pygame.display.set_node(WIDTH, HEIGHT)
-        pygame.display.set_caption(title)
+        pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
     
     #Creates a new game
