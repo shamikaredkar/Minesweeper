@@ -42,8 +42,6 @@ Features:
 
 **Change Board Size:** Modify the number of rows, columns, and mines in the settings.py file for different difficulty levels. This allows for customizing the challenge to your preference.
 
-**Timer:** The game includes a timer that starts as soon as you make your first move. Try to complete the game as quickly as possible to achieve a high score.
-
 ### Visual Feedback
 
 **Tile Graphics:** Different tiles have distinct graphics to indicate whether they are empty, contain a number (indicating the count of neighboring mines), or are mines/flags.
